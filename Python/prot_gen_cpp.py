@@ -15,9 +15,10 @@
 - - - prot_gen_cpp.py main.cpp
 - - - prot_gen_cpp.py scketch.ino
 - - Long line wrapping functions are not supported
-- - The function must be aligned in the first column, use VScode's automatic indentation before generating the prototypes.
-- - - VScode auto indent shortcut: Control + Shift + I
-- - - Arduino IDE auto indent shortcut: Control + T
+- - The function must be aligned in the first column
+- - - Use automatic indentation before generating the prototypes:
+- - - - VScode auto indent shortcut: Control + Shift + I
+- - - - Arduino IDE auto indent shortcut: Control + T
 
 - Referece: https://cplusplus.com/doc/tutorial/variables/
 """
