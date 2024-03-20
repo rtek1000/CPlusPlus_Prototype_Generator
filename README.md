@@ -3,6 +3,11 @@ Function prototype generator for C++ (Do you want to migrate Arduino IDE code to
 
 ----
 
+If you are looking for a way to generate code prototypes in C:
+https://marketplace.visualstudio.com/items?itemName=Molitany.c-auto-prototypes
+
+----
+
 Usage:
 
 - Rules:
