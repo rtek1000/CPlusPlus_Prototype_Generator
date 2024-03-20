@@ -1,6 +1,5 @@
 # C++ Prototype Generator
-Function prototype generator for C++
-(Do you want to migrate Arduino IDE code to VS Code?)
+Function prototype generator for C++ (Do you want to migrate Arduino IDE code to VS Code?)
 
 ----
 
