@@ -11,7 +11,9 @@ Usage:
 
 - - The keyword does not need to be complete (uint: uint8_t, uint32_t)
 
-- - The source file name must be placed after the script name, example: prot_gen_cpp.py main.cpp
+- - The source file name must be placed after the script name:
+- - - prot_gen_cpp.py main.cpp
+- - - prot_gen_cpp.py scketch.ino
  
 - - Long line wrapping functions are not supported
  
