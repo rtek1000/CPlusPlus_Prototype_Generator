@@ -20,6 +20,7 @@ Usage:
 - - The function must be aligned in the first column
 - - - Use automatic indentation before generating the prototypes:
 - - - - VScode auto indent shortcut: Control + Shift + I
+- - - - - (Some extensions may interfere with this)
 - - - - Arduino IDE auto indent shortcut: Control + T
       
 ----
