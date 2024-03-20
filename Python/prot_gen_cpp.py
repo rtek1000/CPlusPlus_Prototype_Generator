@@ -38,47 +38,61 @@ import sys
 #  Main definition
 def main():
     #  If any keyword is missing, put it here:
-    header_array = ["char", "wchar", "signed", "unsigned", \
-                    "short", "int", "long", "float", \
-                    "double", "bool", "void", "byte", \
-                    "word", "const", "decltype", \
-                    "uint", "String"]
-    
+    header_array = [
+        "char",
+        "wchar",
+        "signed",
+        "unsigned",
+        "short",
+        "int",
+        "long",
+        "float",
+        "double",
+        "bool",
+        "void",
+        "byte",
+        "word",
+        "const",
+        "decltype",
+        "uint",
+        "String",
+    ]
+
     #  Print 1 empty line
     print()
-    
+
     filename = ""
-    
+
     try:
         filename = sys.argv[1]
     except IndexError:
         print("Error, the source file name must be placed after the script name:")
         print("Example: C:\prot_gen_cpp.py main.cpp\r\n")
         return 0
-        
+
     check_file = os.path.isfile(filename)
-    
+
     if check_file == False:
         print("File not found: ", filename)
         return 0
 
     # Open file, read only
-    file1 = open(filename, 'r')
-    
+    file1 = open(filename, "r")
+
     previousPrototype = ""
-    
+
     prototypeLine = ""
-    
+
     isPrototype = False
-    
+
     codeLine = ""
-    
+
     # Loop
     while True:
         # Get next line from file
         line = file1.readline()
         #  If line is empty
-        if not line: 
+        if not line:
             #  End Of File is reached
             break
         #  Scan keyword list
@@ -99,13 +113,13 @@ def main():
                     delimiterC2 = codeLine.find("/*") + 1
                 # Compare position
                 if delimiterC1 < delimiterC2:
-                    #  Save code only 
+                    #  Save code only
                     codeLine = codeLine[:delimiterC1]
                 if delimiterC1 > delimiterC2:
                     #  Save code only
-                    codeLine = codeLine[:delimiterC2]            
+                    codeLine = codeLine[:delimiterC2]
             #  Get only the first word of the line
-            word1 = codeLine.split(' ', 1)[0]
+            word1 = codeLine.split(" ", 1)[0]
             #  Are the keyword and delimiter present?
             if header == word1 and "(" in codeLine:
                 #  Set line as the start of a prototype
@@ -125,13 +139,15 @@ def main():
                 #  Check if the next character is a line terminator
                 if prototypeLine[delimiterR] == ";":
                     #  Do not print, it is already a prototype
-                    isPrototype = False;
+                    isPrototype = False
             #  Is the character "{" present?
             if "{" in prototypeLine:
                 #  Remove the "{" character
                 prototypeLine = prototypeLine.replace("{", "")
-            #  Insert prototype terminator (";") 
-            prototypeLine = prototypeLine[:delimiterR] + ";" + prototypeLine[delimiterR:]
+            #  Insert prototype terminator (";")
+            prototypeLine = (
+                prototypeLine[:delimiterR] + ";" + prototypeLine[delimiterR:]
+            )
             #  Remove from the end anything that is not a readable character from the line
             prototypeLine = prototypeLine.rstrip()
             #  Filter in case line repetition occurs (bug?)
