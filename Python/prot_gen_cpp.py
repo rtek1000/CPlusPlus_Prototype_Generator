@@ -15,6 +15,7 @@
 - - - prot_gen_cpp.py main.cpp
 - - - prot_gen_cpp.py scketch.ino
 - - Function prototypes with multiple lines are supported
+- - Prototypes already present in the code are not listed
 - - The function must be aligned in the first column
 - - - Use automatic indentation before generating the prototypes:
 - - - - VScode auto indent shortcut: Control + Shift + I
