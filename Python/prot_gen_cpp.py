@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 """
@@ -35,6 +35,7 @@ def main():
     
     filename = ""
     
+    
     try:
         filename = sys.argv[1]
     except IndexError:
@@ -51,6 +52,8 @@ def main():
     # Open file, read only
     file1 = open(filename, 'r')
     
+    previousPrototype = ""
+    
     # Loop
     while True:
         # Get next line from file
@@ -61,11 +64,11 @@ def main():
             #  End Of File is reached
             break    
         
-        #  Line has at least 3 characters?
+        #  Line has at least 3 character?
         if len(line) > 2: 
             #  Get only the first word of the line
             word1 = line.split(' ', 1)[0] 
-            #  Word has at least 3 characters?
+            #  Word has at least 3 character?
             if len(word1) > 2:   
                 #  Scan keyword list
                 for header in header_array: 
@@ -78,9 +81,13 @@ def main():
                             #  Remove from the ends anything that is not a readable character from the line
                             newline = line.strip()    
                             #  Insert prototype terminator (";")
-                            newline = newline[:terminator1] + ';' + newline[terminator1:]  
-                            #  Print prototype
-                            print(newline)    
+                            newline = newline[:terminator1] + ';' + newline[terminator1:]
+                            #  Filter in case line repetition occurs (bug?)
+                            if newline != previousPrototype:
+                                #  Save prototype
+                                previousPrototype = newline
+                                #  Print prototype
+                                print(newline)    
     # Close file
     file1.close()
 
