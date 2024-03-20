@@ -22,7 +22,7 @@
     -
     - - If after the name of the source file, -I is entered,
         then prints it in the terminal and saves it in the
-        ProTotypes.txt file, but above the first routine
+        ProTypes.txt file, but above the first routine
         found along with the code found in the source file
 
     Rules:
