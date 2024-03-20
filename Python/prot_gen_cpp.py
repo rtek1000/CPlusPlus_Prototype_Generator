@@ -14,7 +14,7 @@
 - - The source file name must be placed after the script name:
 - - - prot_gen_cpp.py main.cpp
 - - - prot_gen_cpp.py scketch.ino
-- - Long line wrapping functions are not supported
+- - Function prototypes with multiple lines are supported
 - - The function must be aligned in the first column
 - - - Use automatic indentation before generating the prototypes:
 - - - - VScode auto indent shortcut: Control + Shift + I
@@ -60,6 +60,12 @@ def main():
     
     previousPrototype = ""
     
+    prototypeLine = ""
+    
+    isPrototype = False
+    
+    codeLine = ""
+    
     # Loop
     while True:
         # Get next line from file
@@ -68,34 +74,73 @@ def main():
         #  If line is empty
         if not line: 
             #  End Of File is reached
-            break    
+            break
         
-        #  Line has at least 3 character?
-        if len(line) > 2: 
+        #  Scan keyword list
+        for header in header_array:
+            # Copy line data
+            codeLine = line
+            #  Is the comment delimiter present?
+            if "//" in codeLine or "/*" in codeLine:
+                #  Initialize position as 'not present' flag
+                delimiterC1 = 0xFFFFFFFF
+                #  Initialize position as 'not present' flag
+                delimiterC2 = 0xFFFFFFFF
+                if "//" in codeLine:
+                    #  Save delimiter position "//" and add 1
+                    delimiterC1 = codeLine.find("//") + 1
+                if "/*" in codeLine:
+                    #  Save delimiter position "/*" and add 1
+                    delimiterC2 = codeLine.find("/*") + 1
+                # Compare position
+                if delimiterC1 < delimiterC2:
+                    #  Save code only 
+                    codeLine = codeLine[:delimiterC1]
+                if delimiterC1 > delimiterC2:
+                    #  Save code only
+                    codeLine = codeLine[:delimiterC2]            
             #  Get only the first word of the line
-            word1 = line.split(' ', 1)[0] 
-            #  Word has at least 3 character?
-            if len(word1) > 2:   
-                #  Scan keyword list
-                for header in header_array: 
-                    #  Keyword and delimiters found?
-                    if header in line and "(" in line and ")" in line:  
-                        #  Save position of first delimiter ")" and add 1
-                        terminator1 = line.find(")") + 1   
-                        #  Is the value of the first terminator greater than 0?
-                        if terminator1 > 0:
-                            #  Remove from the ends anything that is not a readable character from the line
-                            newline = line.strip()
-                            #  Remove the '{' character if it has been Auto-indented in the Arduino IDE
-                            newline = newline.replace('{', '')
-                            #  Insert prototype terminator (";")
-                            newline = newline[:terminator1] + ";" + newline[terminator1:]
-                            #  Filter in case line repetition occurs (bug?)
-                            if newline != previousPrototype:
-                                #  Save prototype
-                                previousPrototype = newline
-                                #  Print prototype
-                                print(newline)    
+            word1 = codeLine.split(' ', 1)[0]
+            #  Are the keyword and delimiter present?
+            if header == word1 and "(" in codeLine:
+                #  Set line as the start of a prototype
+                isPrototype = True
+            #  Clear codeLine
+            codeLine = ""
+        
+        #  Has the beginning of a prototype been found?
+        if isPrototype == True:
+            #  Store subsequent lines
+            prototypeLine = prototypeLine + line
+        
+        #  Are both delimiters present?
+        if "(" in prototypeLine and ")" in prototypeLine:
+            #  Is the character "{" present?
+            if "{" in prototypeLine:
+                #  Remove the "{" character
+                prototypeLine = prototypeLine.replace("{", "")
+            
+            #  Save delimiter position ")" and add 1
+            delimiterR = prototypeLine.find(")") + 1
+            #  Insert prototype terminator (";") 
+            prototypeLine = prototypeLine[:delimiterR] + ";" + prototypeLine[delimiterR:]
+            #  Remove from the end anything that is not a readable character from the line
+            prototypeLine = prototypeLine.rstrip()
+            #  Filter in case line repetition occurs (bug?)
+            if prototypeLine != previousPrototype:
+                #  As long as there are spaces
+                while prototypeLine[0] == " ":
+                    #  Remove space
+                    prototypeLine = prototypeLine[1:]
+                #  Print prototype
+                print(prototypeLine)
+                #  Save prototype
+                previousPrototype = prototypeLine
+            #  Clear prototypeLine
+            prototypeLine = ""
+            #  Clear start of a prototype flag
+            isPrototype = False
+            
     # Close file
     file1.close()
 
