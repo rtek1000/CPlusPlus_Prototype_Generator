@@ -1,7 +1,17 @@
 Usage:
-- The source file name must be placed after the script name:
+- The source file name must be placed after the script name (Option: -I):
 - - prot_gen_cpp.py main.cpp
 - - prot_gen_cpp.py scketch.ino
+-
+- Options:
+- - If only the name of the source file is given,
+    by default it prints in the terminal and
+    saves it in the PropTypes.txt file
+-
+- - If after the name of the source file, -I is entered,
+    then prints it in the terminal and saves it in the
+    ProTotypes.txt file, but above the first routine
+    found along with the code found in the source file
 
 Rules:
 - The function must be aligned in the first column
