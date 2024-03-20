@@ -7,6 +7,8 @@ Usage:
 - The source file name must be placed after the script name (Option: -I):
 - - prot_gen_cpp.py main.cpp
 - - prot_gen_cpp.py scketch.ino
+- - prot_gen_cpp.py main.cpp -I
+- - prot_gen_cpp.py scketch.ino -I
 -
 - Options:
 - - If only the name of the source file is given,
