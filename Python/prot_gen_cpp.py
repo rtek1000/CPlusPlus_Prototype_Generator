@@ -76,7 +76,7 @@ def main():
         print("File not found: ", filename)
         return 0
 
-    # Open file, read only
+    #  Open file, read only
     file1 = open(filename, "r")
 
     previousPrototype = ""
@@ -87,9 +87,9 @@ def main():
 
     codeLine = ""
 
-    # Loop
+    #  Loop
     while True:
-        # Get next line from file
+        #  Get next line from file
         line = file1.readline()
         #  If line is empty
         if not line:
@@ -166,7 +166,7 @@ def main():
             prototypeLine = ""
             #  Clear start of a prototype flag
             isPrototype = False
-    # Close file
+    #  Close file
     file1.close()
 
 
