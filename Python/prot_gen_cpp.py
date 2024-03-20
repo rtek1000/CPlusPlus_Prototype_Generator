@@ -49,7 +49,6 @@ def main():
     
     filename = ""
     
-    
     try:
         filename = sys.argv[1]
     except IndexError:
