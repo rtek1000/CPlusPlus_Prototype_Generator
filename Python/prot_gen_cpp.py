@@ -12,6 +12,7 @@
 - - The first word on the line must be listed in the header_array variable (void, uint, String etc)
 - - The keyword does not need to be complete (uint: uint8_t, uint32_t)
 - - The source file name must be placed after the script name: prot_gen_cpp.py main.cpp
+- - Long line wrapping functions are not supported
 
 - Referece: https://cplusplus.com/doc/tutorial/variables/
 """
