@@ -9,3 +9,6 @@ Usage:
 - - The source file name must be placed after the script name, example: prot_gen_cpp.py main.cpp
 
 - - Long line wrapping functions are not supported
+
+- - The function must be aligned in the first column, use VScode's automatic indentation before generating the prototypes.
+- - - VScode auto indent shortcut: Control + Shift + I
