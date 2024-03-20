@@ -19,7 +19,8 @@ Usage:
  
 - - The function must be aligned in the first column, use VScode's automatic indentation before generating the prototypes.
 - - - VScode auto indent shortcut: Control + Shift + I
-
+- - - Arduino IDE auto indent shortcut: Control + T
+      
 ----
 
 If you are looking for a way to generate code prototypes in C:
