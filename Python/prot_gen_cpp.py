@@ -14,18 +14,19 @@
     - - prot_gen_cpp.py scketch.ino
 
     Rules:
-    - The first word on the line must be listed in the 'header_array' variable (void, uint, String etc)
-    - - The keyword does not need to be complete (uint: uint8_t, uint32_t)
-
-    - Function prototypes with multiple lines are supported
-
-    - Prototypes already present in the code are not listed
-
     - The function must be aligned in the first column
     - - Use automatic indentation before generating the prototypes:
     - - - VScode auto indent shortcut: Control + Shift + I
     - - - - (Some extensions may interfere with this)
     - - - Arduino IDE auto indent shortcut: Control + T
+    -
+    - If necessary, add the keyword to the 'header_array' variable (void, uint, String etc)
+    - - The keyword does not need to be complete (uint: uint8_t, uint32_t)
+
+    Info:
+    - Function prototypes with multiple lines are supported
+    -
+    - Prototypes already present in the code are not listed
 
 - Referece: https://cplusplus.com/doc/tutorial/variables/
 """
