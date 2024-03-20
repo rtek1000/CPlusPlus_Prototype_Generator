@@ -61,11 +61,11 @@ def main():
             #  End Of File is reached
             break    
         
-        #  Line has at least 3 character?
+        #  Line has at least 3 characters?
         if len(line) > 2: 
             #  Get only the first word of the line
             word1 = line.split(' ', 1)[0] 
-            #  Word has at least 3 character?
+            #  Word has at least 3 characters?
             if len(word1) > 2:   
                 #  Scan keyword list
                 for header in header_array: 
