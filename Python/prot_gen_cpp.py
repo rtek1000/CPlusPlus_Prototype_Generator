@@ -20,7 +20,7 @@
     - - - - (Some extensions may interfere with this)
     - - - Arduino IDE auto indent shortcut: Control + T
     -
-    - If necessary, add the keyword to the 'header_array' variable (void, uint, String etc)
+    - If necessary, add the keyword to the 'header_list' variable (void, uint, String etc)
     - - The keyword does not need to be complete (uint: uint8_t, uint32_t)
 
     Info:
@@ -38,7 +38,7 @@ import sys
 #  Main definition
 def main():
     #  If any keyword is missing, put it here:
-    header_array = [
+    header_list = [
         "char",
         "wchar",
         "signed",
@@ -96,7 +96,7 @@ def main():
             #  End Of File is reached
             break
         #  Scan keyword list
-        for header in header_array:
+        for header in header_list:
             #  Copy line data
             codeLine = line
             #  Is the comment delimiter present?
