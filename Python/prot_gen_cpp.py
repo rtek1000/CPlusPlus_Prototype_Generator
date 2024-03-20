@@ -70,12 +70,10 @@ def main():
     while True:
         # Get next line from file
         line = file1.readline()
-                
         #  If line is empty
         if not line: 
             #  End Of File is reached
             break
-        
         #  Scan keyword list
         for header in header_array:
             # Copy line data
@@ -107,21 +105,24 @@ def main():
                 isPrototype = True
             #  Clear codeLine
             codeLine = ""
-        
         #  Has the beginning of a prototype been found?
         if isPrototype == True:
             #  Store subsequent lines
             prototypeLine = prototypeLine + line
-        
         #  Are both delimiters present?
         if "(" in prototypeLine and ")" in prototypeLine:
+            #  Save delimiter position ")" and add 1
+            delimiterR = prototypeLine.find(")") + 1
+            #  Check if line terminator is present
+            if ";" in prototypeLine:
+                #  Check if the next character is a line terminator
+                if prototypeLine[delimiterR] == ";":
+                    #  Do not print, it is already a prototype
+                    isPrototype = False;
             #  Is the character "{" present?
             if "{" in prototypeLine:
                 #  Remove the "{" character
                 prototypeLine = prototypeLine.replace("{", "")
-            
-            #  Save delimiter position ")" and add 1
-            delimiterR = prototypeLine.find(")") + 1
             #  Insert prototype terminator (";") 
             prototypeLine = prototypeLine[:delimiterR] + ";" + prototypeLine[delimiterR:]
             #  Remove from the end anything that is not a readable character from the line
@@ -132,15 +133,16 @@ def main():
                 while prototypeLine[0] == " ":
                     #  Remove space
                     prototypeLine = prototypeLine[1:]
-                #  Print prototype
-                print(prototypeLine)
-                #  Save prototype
-                previousPrototype = prototypeLine
+                #  Do not print if it is already a prototype
+                if isPrototype == True:
+                    #  Print prototype
+                    print(prototypeLine)
+                    #  Save prototype
+                    previousPrototype = prototypeLine
             #  Clear prototypeLine
             prototypeLine = ""
             #  Clear start of a prototype flag
             isPrototype = False
-            
     # Close file
     file1.close()
 
