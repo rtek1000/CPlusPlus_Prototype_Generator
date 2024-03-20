@@ -10,7 +10,7 @@ Usage:
 - - - prot_gen_cpp.py main.cpp
 - - - prot_gen_cpp.py scketch.ino
 
-- - Long line wrapping functions are not supported
+- - Function prototypes with multiple lines are supported
 
 - - The function must be aligned in the first column
 - - - Use automatic indentation before generating the prototypes:
