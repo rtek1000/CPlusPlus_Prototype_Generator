@@ -18,7 +18,7 @@
     - Options:
     - - If only the name of the source file is given,
         by default it prints in the terminal and
-        saves it in the PropTypes.txt file
+        saves it in the ProTypes.txt file
     -
     - - If after the name of the source file, -I is entered,
         then prints it in the terminal and saves it in the
