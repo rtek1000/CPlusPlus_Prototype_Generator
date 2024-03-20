@@ -15,6 +15,7 @@
 - - Long line wrapping functions are not supported
 - - The function must be aligned in the first column, use VScode's automatic indentation before generating the prototypes.
 - - - VScode auto indent shortcut: Control + Shift + I
+- - - Arduino IDE auto indent shortcut: Control + T
 
 - Referece: https://cplusplus.com/doc/tutorial/variables/
 """
@@ -81,9 +82,11 @@ def main():
                         #  Is the value of the first terminator greater than 0?
                         if terminator1 > 0:
                             #  Remove from the ends anything that is not a readable character from the line
-                            newline = line.strip()    
+                            newline = line.strip()
+                            #  Remove the '{' character if it has been Auto-indented in the Arduino IDE
+                            newline = newline.replace('{', '')
                             #  Insert prototype terminator (";")
-                            newline = newline[:terminator1] + ';' + newline[terminator1:]
+                            newline = newline[:terminator1] + ";" + newline[terminator1:]
                             #  Filter in case line repetition occurs (bug?)
                             if newline != previousPrototype:
                                 #  Save prototype
