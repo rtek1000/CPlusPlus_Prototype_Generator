@@ -7,3 +7,5 @@ Usage:
 - - The keyword does not need to be complete (uint: uint8_t, uint32_t)
 
 - - The source file name must be placed after the script name, example: prot_gen_cpp.py main.cpp
+
+- - Long line wrapping functions are not supported
