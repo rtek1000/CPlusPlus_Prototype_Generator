@@ -3,12 +3,6 @@ Function prototype generator for C++ (Do you want to migrate Arduino IDE code to
 
 ----
 
-If you are looking for a way to generate code prototypes in C:
-
-- [C Auto Prototypes](https://marketplace.visualstudio.com/items?itemName=Molitany.c-auto-prototypes)
-
-----
-
 Usage:
 
 - Rules:
@@ -20,6 +14,13 @@ Usage:
 - - The source file name must be placed after the script name, example: prot_gen_cpp.py main.cpp
  
 - - Long line wrapping functions are not supported
+
+----
+
+If you are looking for a way to generate code prototypes in C:
+
+- [C Auto Prototypes](https://marketplace.visualstudio.com/items?itemName=Molitany.c-auto-prototypes)
+
 ----
 
 ### Licence
