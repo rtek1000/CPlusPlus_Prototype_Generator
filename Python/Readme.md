@@ -28,4 +28,4 @@ Rules:
 Info:
 - Function prototypes with multiple lines are supported
 -
-- Prototypes already present in the code are not listed
+- Prototypes already present in the code are listed
