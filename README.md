@@ -4,21 +4,19 @@ Function prototype generator for C++ (Do you want to migrate Arduino IDE code to
 ----
 
 Usage:
+- The source file name must be placed after the script name:
+- - prot_gen_cpp.py main.cpp
+- - prot_gen_cpp.py scketch.ino
 
 - Rules:
 
 - - The first word on the line must be listed in the 'header_array' variable (void, uint, String etc)
+- - - The keyword does not need to be complete (uint: uint8_t, uint32_t)
 
-- - The keyword does not need to be complete (uint: uint8_t, uint32_t)
-
-- - The source file name must be placed after the script name:
-- - - prot_gen_cpp.py main.cpp
-- - - prot_gen_cpp.py scketch.ino
- 
 - - Function prototypes with multiple lines are supported
- 
+
 - - Prototypes already present in the code are not listed
- 
+
 - - The function must be aligned in the first column
 - - - Use automatic indentation before generating the prototypes:
 - - - - VScode auto indent shortcut: Control + Shift + I
