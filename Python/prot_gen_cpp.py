@@ -97,7 +97,7 @@ def main():
             break
         #  Scan keyword list
         for header in header_array:
-            # Copy line data
+            #  Copy line data
             codeLine = line
             #  Is the comment delimiter present?
             if "//" in codeLine or "/*" in codeLine:
