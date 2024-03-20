@@ -15,7 +15,7 @@ Rules:
 - - - - (Some extensions may interfere with this)
 - - - Arduino IDE auto indent shortcut: Control + T
 -
-- If necessary, add the keyword to the 'header_array' variable (void, uint, String etc)
+- If necessary, add the keyword to the 'header_list' variable (void, uint, String etc)
 - - The keyword does not need to be complete (uint: uint8_t, uint32_t)
 
 Info:
